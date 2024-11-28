@@ -15,7 +15,7 @@ import {
 } from "expo-location";
 import { colors } from "@/theme";
 
-export default function HomeScreen() {
+export default function LocationMap() {
   // Definir a localização atual do usuário
   const [isLocation, setLocation] = useState<LocationObject | null>(null);
   // A localização do usuário será exibida no mapa.
