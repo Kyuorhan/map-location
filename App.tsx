@@ -1,10 +1,9 @@
-
 import { SafeAreaView, StyleSheet } from "react-native";
-import theme from "./src/styles/theme";
 import HomeScreen from "./src/app/screen/Home";
-
+import * as Font from "expo-font";
 import {
   useFonts as userFontPoppins,
+  Poppins_900Black,
   Poppins_700Bold,
   Poppins_600SemiBold,
   Poppins_500Medium,
@@ -12,6 +11,7 @@ import {
 } from "@expo-google-fonts/poppins";
 import {
   useFonts as userFontsInter,
+  Inter_900Black,
   Inter_700Bold,
   Inter_600SemiBold,
   Inter_500Medium,
@@ -20,31 +20,31 @@ import {
 import { Loading } from "@/app/components/Loading";
 
 export default function App() {
-  const [poppinsLoaded] = userFontPoppins({
-    Poppins_700Bold,
-    Poppins_600SemiBold,
-    Poppins_500Medium,
-    Poppins_400Regular,
-  });
-  const [interLoaded] = userFontsInter({
-    Inter_700Bold,
-    Inter_600SemiBold,
-    Inter_500Medium,
-    Inter_400Regular,
-  });
+  const [fontsLoaded] =
+    userFontPoppins({
+      Poppins_900Black,
+      Poppins_700Bold,
+      Poppins_600SemiBold,
+      Poppins_500Medium,
+      Poppins_400Regular,
+    }) &&
+    userFontsInter({
+      Inter_900Black,
+      Inter_700Bold,
+      Inter_600SemiBold,
+      Inter_500Medium,
+      Inter_400Regular,
+    });
 
-  if (!poppinsLoaded || !interLoaded) {
+  if (!fontsLoaded) {
     return <Loading />;
   }
 
-  return  (
+  return (
     <SafeAreaView style={styles.container}>
-      {poppinsLoaded && interLoaded 
-        ? ( <HomeScreen /> ) 
-        : null
-      }      
+      <HomeScreen />
     </SafeAreaView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
