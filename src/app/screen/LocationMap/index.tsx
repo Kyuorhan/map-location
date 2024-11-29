@@ -13,11 +13,13 @@ import {
   watchPositionAsync,
   LocationAccuracy,
 } from "expo-location";
-import { colors } from "@/theme";
+import { colors } from "theme";
+import { CurrentLocation } from "constants/CurrentLocation";
+import { useAtom } from "jotai";
 
 export default function LocationMap() {
   // Definir a localização atual do usuário
-  const [isLocation, setLocation] = useState<LocationObject | null>(null);
+  const [location, setLocation] = useAtom(CurrentLocation);
   // A localização do usuário será exibida no mapa.
   const [isFollowUser, setFollowUser] = useState(false);
 
@@ -81,14 +83,14 @@ export default function LocationMap() {
 
   return (
     <SafeAreaView style={styles.container}>
-      {isLocation && (
+      {location && (
         <MapView
           ref={mapRef}
           style={styles.map}
           customMapStyle={customMapStyle}
           initialRegion={{
-            latitude: isLocation.coords.latitude,
-            longitude: isLocation.coords.longitude,
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
             latitudeDelta: 0.005,
             longitudeDelta: 0.005,
           }}
@@ -100,8 +102,8 @@ export default function LocationMap() {
         >
           <Marker
             coordinate={{
-              latitude: isLocation.coords.latitude,
-              longitude: isLocation.coords.longitude,
+              latitude: location.coords.latitude,
+              longitude: location.coords.longitude,
             }}
           />
         </MapView>

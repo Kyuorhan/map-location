@@ -1,5 +1,5 @@
 import { Dimensions } from "react-native";
-import { scaleFont } from "@/utils/scale";
+import { scaleFont } from "utils/scale";
 
 const { height } = Dimensions.get("window");
 

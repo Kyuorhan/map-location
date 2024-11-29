@@ -1,14 +1,11 @@
-import { fontFamily, fontSize } from "@/theme";
+import { colors, fontFamily, fontSize } from "theme";
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "100%",
-    // backgroundColor: theme.colors.base.gray100,
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
+    // backgroundColor: "red",
+    backgroundColor: colors.base.gray600,
   },
 });
 

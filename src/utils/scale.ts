@@ -30,6 +30,7 @@ export function scaleHeight(size: number): number {
  */
 export function scaleFont(size: number, maxScale: number = 1.2): number {
   const scale = PixelRatio.getFontScale();
+  console.log("scale>>> ", scale);
   const scaledSize = size * scale;
   return Math.min(scaledSize, size * maxScale);
 }

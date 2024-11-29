@@ -1,4 +1,4 @@
-import { fontSize } from "@/theme";
+import { fontSize } from "theme";
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({

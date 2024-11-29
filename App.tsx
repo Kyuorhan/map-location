@@ -1,6 +1,6 @@
-import { SafeAreaView, StyleSheet } from "react-native";
-import HomeScreen from "./src/app/screen/Home";
-import * as Font from "expo-font";
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { enableScreens } from "react-native-screens";
 import {
   useFonts as userFontPoppins,
   Poppins_900Black,
@@ -17,7 +17,11 @@ import {
   Inter_500Medium,
   Inter_400Regular,
 } from "@expo-google-fonts/inter";
-import { Loading } from "@/app/components/Loading";
+import { Loading } from "app/components/Loading";
+import Routes from "routes";
+
+// Certifique-se de que enableScreens é chamado antes de qualquer navegação
+enableScreens();
 
 export default function App() {
   const [fontsLoaded] =
@@ -41,16 +45,8 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <HomeScreen />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Routes />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // alignItems: "center",
-    // justifyContent: "center",
-  },
-});
